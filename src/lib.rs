@@ -1,4 +1,11 @@
+extern crate pest;
+#[macro_use]
+extern crate pest_derive;
+
+mod dictionary_en;
+mod ingredient_en;
 mod utils;
+mod vulgar_fractions;
 
 use wasm_bindgen::prelude::*;
 
@@ -9,11 +16,7 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-extern {
-    fn alert(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, ingredient-parser!");
+pub fn parse(str: &str) -> Result<JsValue, JsValue> {
+    let info = ingredient_en::parse(str);
+    serde_wasm_bindgen::to_value(&info).map_err(|err| err.into())
 }
