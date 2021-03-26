@@ -36,7 +36,7 @@ integer = @{ ASCII_DIGIT+ }
 
 float = @{ integer? ~ ("." | ",") ~ integer }
 
-word_digit = { "a" | "an" | "one" | "two" | "three" }
+word_digit = { "an" | "a" | "one" | "two" | "three" }
 
 constant = { fraction | float | integer | word_digit }
 
@@ -62,6 +62,10 @@ quantity = _{ (amount ~ unit_and_preposition? | unit_and_preposition) ~ containe
 
 ingredient = { ANY* }
 
+ingredient_alt = { (!(quantity ~ EOI) ~ ANY)* }
+
+reverse_format = _{ ingredient_alt ~ quantity }
+
 standard_format = _{ quantity ~ ingredient }
 
-ingredient_and_amount_and_unit = _{ SOI ~ (standard_format) ~ EOI }
+ingredient_and_amount_and_unit = _{ SOI ~ (standard_format | reverse_format) ~ EOI }
