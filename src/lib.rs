@@ -2,10 +2,10 @@ extern crate pest;
 #[macro_use]
 extern crate pest_derive;
 
-mod dictionary_en;
 mod ingredient_en;
 mod utils;
 mod vulgar_fractions;
+mod unit;
 
 use wasm_bindgen::prelude::*;
 

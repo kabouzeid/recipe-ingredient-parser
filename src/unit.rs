@@ -1,0 +1,30 @@
+use serde::Serialize;
+
+#[derive(Clone, Copy, PartialEq, Debug, Serialize)]
+pub enum Unit {
+    Cup,
+    FluidOunce,
+    Gallon,
+    Ounce,
+    Pint,
+    Pound,
+    Quart,
+    Tablespoon,
+    Teaspoon,
+    Gram,
+    Kilogram,
+    Liter,
+    Milligram,
+    Milliliter,
+    Pinch,
+    Dash,
+    Touch,
+    Handful,
+    Stick,
+    Clove,
+    Can,
+    ToTaste,
+    Bottle,
+    Bunch,
+    Packet,
+}

@@ -15,4 +15,5 @@ fn pass() {
 #[wasm_bindgen_test]
 fn parse() {
     assert!(ingredient_parser::parse("3 kg butter").is_ok());
+    assert!(ingredient_parser::parse("300 ml milk").is_ok());
 }
